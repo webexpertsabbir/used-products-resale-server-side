@@ -67,14 +67,14 @@ async function run() {
 
         app.post('/users', async (req, res) => {
             const user = req.body;
-            console.log(user);
+            // console.log(user);
             const result = await usersCollection.insertOne(user);
             res.send(result);
         });
 
         app.post('/booking', async(req, res) =>{
             const booking = req.body;
-            console.log(booking);
+            // console.log(booking)
             const result = await bookingCollection.insertOne(booking);
             res.send(result);
         })
