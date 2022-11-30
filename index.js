@@ -32,14 +32,23 @@ async function run() {
             const query = { _id: ObjectId(id) };
             const singelCategory = await relaseProductCollaction.findOne(query);
             res.send(singelCategory)
-        });  
+        }); 
         
+        app.get('/bookings', async(req, res) =>{
+            const email = req.query.email;
+            const query = {email: email};
+            const bookings = await bookingCollection.find(query).toArray();
+            res.send(bookings);
+        })
+
         app.post('/booking', async(req, res) =>{
             const booking = req.body;
             // console.log(booking);
             const result = await bookingCollection.insertOne(booking);
             res.send(result);
         })
+
+      
     }
 
     finally {
